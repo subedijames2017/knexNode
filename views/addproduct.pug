@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .container
+    form#add-product(method='post', action='/add' enctype="multipart/form-data")
+        .form-group
+        label Catogory
+        input#form_catogory.form-control(type='text', placeholder='Catogory', name='catogory',required="")
+        small#catogory_error.error_form
+        .form-group
+        label Title
+        input#form_title.form-control(type='text', placeholder='Type', name='type',required="")
+        small#title_error.error_form
+        .form-group
+        label Type
+        input#form_type.form-control(type='text', placeholder='Title', name='title',required="")
+        small#type_error.error_form
+        .form-group
+        label Name
+        input#form_name.form-control(type='text', placeholder='Name', name='name',required="")
+        small#name_error.error_form
+        .form-group
+        label Small description
+        textarea#form_description.form-control(type='text', name='description',required="")   
+        small#description_error.error_form  
+        .form-group
+        label price
+        input#form_price.form-control(type='text', placeholder='Rs.', name='price',required="")
+        small#price_error.error_form
+        .form-group
+        label Product image
+        input#avatar(type='file', name='image',required="")
+        button.btn.btn-primary(type='submit') Submit

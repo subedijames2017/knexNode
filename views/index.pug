@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .container
+    .row
+      each product in products
+        .card.col-md-4(style='width: 18rem;')
+          img.card-img-top(src=`http://localhost:3000/${product.image}`, alt='...')
+          .card-body
+            h5.card-title= product.name 
+            p.card-text= product.description
+            p.card-text= `${product.price}`
+            a.fa.fa-edit.btn.btn-primary.pull-left.fa.fa-edit(href=`/edit/${product.id}`)
+            form(method='POST', action=`/delete/${product.id}?_method=DELETE`)
+              button.fa.fa-trash.btn.btn-danger.pull-left(type='submit')
+
