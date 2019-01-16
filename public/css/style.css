@@ -4,3 +4,28 @@
     position:relative;
     margin-right: 200;
 }
+.sidebar-sticky{
+  height: 100vh;
+}
+.vertical-menu {
+    width: 200px;
+  }
+  .active{
+    background-color: aqua;
+  }
+  .vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+  
+  .vertical-menu a:hover {
+    background-color: #ccc;
+  }
+  
+  .vertical-menu a.active {
+    background-color: #4CAF50;
+    color: white;
+  }

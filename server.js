@@ -37,7 +37,6 @@ var uploadFnct = function(){
 
   return upload;
 };
-
 //making the port to listen
 const port =process.env.PORT||3000
 var knex = require('knex')({
@@ -96,9 +95,16 @@ app.use(express.static(path.join(__dirname)))
 //home route
 app.get('/',(req,res)=>{
   knex.select().table('products').then((products)=>{
-    res.render('index',{
-      products
-    })
+    const catogories = products.map((products)=>products.catogory);
+    function onlyUnique(value, index, self) { 
+      return self.indexOf(value) === index;
+  }
+  var uniqueCatogory = catogories.filter( onlyUnique ).sort();
+  console.log(uniqueCatogory)
+  res.render('index',{
+    products,
+    uniqueCatogory
+  })
   })
 });
 //get add product form
@@ -126,6 +132,23 @@ app.post('/add',(req,res)=>{
       }
     }
   })
+})
+//get by catogory
+app.get('/:catogory',(req,res)=>{
+  knex.select().table('products').then((products)=>{
+    const catogories = products.map((products)=>products.catogory);
+    function onlyUnique(value, index, self) { 
+      return self.indexOf(value) === index;
+  }
+  var uniqueCatogory = catogories.filter( onlyUnique ).sort();
+  knex('products').where('catogory',req.params.catogory).then((products)=>{
+    res.render('product',{
+      products,
+      uniqueCatogory
+    })
+  })
+  })
+  .catch(err=>console.log(err))
 })
 app.get('/edit/:id',(req,res)=>{
   knex('products').where('id',req.params.id).then((product)=>{
