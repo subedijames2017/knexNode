@@ -1,12 +1,15 @@
 extends layout
 
 block content
-  .container
+  .container.col-md-10
     form#add-product(method='post', action='/add' enctype="multipart/form-data")
         .form-group
         label Catogory
-        input#form_catogory.form-control(type='text', placeholder='Catogory', name='catogory',required="")
-        small#catogory_error.error_form
+        select.form-control(name='catogory')
+          option(value='man') man
+          option(value='woman') woman
+          option(value='electrical') electrical
+          option(value='book') book
         .form-group
         label Title
         input#form_title.form-control(type='text', placeholder='Type', name='type',required="")

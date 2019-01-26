@@ -1,0 +1,22 @@
+#myModal.modal.fade(role='dialog')
+                  .modal-dialog
+                    .modal-content
+                      .modal-header
+                        h4.modal-title Enter Information
+                        button.close(type='button', data-dismiss='modal') x
+                      .modal-body
+                          form#add-product(method='post')
+                                  .form-group
+                                    label discount Ammount
+                                    input.form-control(type='text', name='discount',required="")
+                                  .form-group
+                                    label Start Date
+                                    input.form-control(type='date', name='startdate',required="")
+                                  .form-group
+                                    label end date
+                                    input.form-control(type='date', name='enddate',required="")
+                                  br
+                                  br
+                                  button.btn.btn-primary(type='submit') Submit
+                      .modal-footer
+                        button.btn.btn-default(type='button', data-dismiss='modal') Close

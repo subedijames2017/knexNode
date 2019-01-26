@@ -5,19 +5,37 @@ block content
   .container-fluid
     .row
       .col-md-3
-        each catogory in uniqueCatogory
           ul.list-group
-            a(href=`/${catogory}`)
-              li.list-group-item= `${catogory}` 
+            each catogory in catogoryArray
+              a(href='#')
+                li.list-group-item= catogory
       .col-md-9
         .row
           each product in products
             .card.col-md-3(style='width: 18rem;')
               img.card-img-top(src=`http://localhost:3000/${product.image}`, alt='...')
               .card-body
-                h5.card-title= product.name 
+                h5.card-title= product.name
                 p.card-text= product.description
-                p.card-text= `${product.price}`
-                a.fa.fa-edit.btn.btn-primary.pull-left.fa.fa-edit(href=`/edit/${product.id}`)
-                form(method='POST', action=`/delete/${product.id}?_method=DELETE`)
+                p.card-text= product.product_id
+                -const final = map(discountArray,product)
+                if(final!==product.price)
+                  strike
+                    p.card-text $
+                      a= `${product.price}` 
+                  p=  final
+                else
+                   p.card-text $
+                      a= `${product.price}` 
+                a.fa.fa-edit.btn.btn-primary.pull-left.fa.fa-edit(href='#')
+                form(method='POST')
                   button.fa.fa-trash.btn.btn-danger.pull-left(type='submit')
+                a.fa.fa-shopping-cart.btn.btn-info.pull-right(href=`#`)
+                br
+                br
+                button.btn.btn-secondary.open-discountForm(type='button', data-toggle='modal', data-target='#myModal' id=`${product.product_id}`) Add Discount
+                include adddiscount.pug
+                      
+                
+
+

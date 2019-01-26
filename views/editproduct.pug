@@ -6,7 +6,11 @@ block content
         form(method='post', action=`/edit/${product[0].id}`)
             .form-group
             label Catogory
-            input.form-control(type='text', value=`${product[0].name}`, name='catogory')
+            select.form-control(name='catogory')
+                option(value='man') man
+                option(value='woman') woman
+                option(value='electrical') electrical
+                option(value='book') book
             .form-group
             label Title
             input.form-control(type='text', value=`${product[0].title}`, name='type')
@@ -22,4 +26,11 @@ block content
             .form-group
             label price
             input.form-control(type='text', placeholder='Rs.', name='price', value=`${product[0].price}`)
+            .form-group
+            label discount
+            select.form-control(name='discount')
+                option(value='man') 0%
+                option(value='woman') 5%
+                option(value='electrical') 10%
+                option(value='book') 15%
             button.btn.btn-primary(type='submit') Submit

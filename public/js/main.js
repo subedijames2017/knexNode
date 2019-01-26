@@ -1,4 +1,8 @@
 $(document).ready(function(argument){
+    $(document).on("click", ".open-discountForm", function (e) {
+        var myDiscountId = e.target.id
+        $("#add-product").attr('action', `/add/discount/${myDiscountId}`);
+   });
     $("#catogory_error").hide();
     $("#title_error").hide();
     $("#type_error").hide();
@@ -138,7 +142,6 @@ $(document).ready(function(argument){
                 alert("Please fill the form correctly")
                 return false;
                 }
-
           })
 
    })

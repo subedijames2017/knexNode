@@ -1,23 +1,16 @@
 extends layout
 
-
 block content
-  .container-fluid
-    .row
-      .col-md-3
-        each catogory in uniqueCatogory
-          ul.list-group
-            a(href=`/${catogory}`)
-              li.list-group-item= `${catogory}` 
-      .col-md-9
-        .row
-          each product in products
-            .card.col-md-3(style='width: 18rem;')
-              img.card-img-top(src=`http://localhost:3000/${product.image}`, alt='...')
+  .container
+    .card.col-md-6(style='width: 18rem;')
+              img.card-img-top(src=`http://localhost:3000/${product[0].image}`, alt='...')
               .card-body
-                h5.card-title= product.name 
-                p.card-text= product.description
-                p.card-text= `${product.price}`
-                a.fa.fa-edit.btn.btn-primary.pull-left.fa.fa-edit(href=`/edit/${product.id}`)
-                form(method='POST', action=`/delete/${product.id}?_method=DELETE`)
+                h5.card-title= product[0].name
+                p.card-text= product[0].description
+                p.card-text= product[0].price
+                a.fa.fa-edit.btn.btn-primary.pull-left.fa.fa-edit(href=`/update/${product[0].ProductId}`)
+                form(method='POST')
                   button.fa.fa-trash.btn.btn-danger.pull-left(type='submit')
+                a.fa.fa-shopping-cart.btn.btn-info.pull-right(href=`/add-to-cart/${product[0].id}`)
+                br
+                br
